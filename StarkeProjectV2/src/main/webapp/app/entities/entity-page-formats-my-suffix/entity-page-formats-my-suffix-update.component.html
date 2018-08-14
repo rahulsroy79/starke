@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-entity-page-formats-my-suffix-heading">Create or edit a Entity Page Formats</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!entityPageFormats.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="entityPageFormats.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pageformatid">Pageformatid</label>
+                    <input type="number" class="form-control" name="pageformatid" id="field_pageformatid"
+                        [(ngModel)]="entityPageFormats.pageformatid" required/>
+                    <div [hidden]="!(editForm.controls.pageformatid?.dirty && editForm.controls.pageformatid?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.pageformatid?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.pageformatid?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pageformatname">Pageformatname</label>
+                    <input type="text" class="form-control" name="pageformatname" id="field_pageformatname"
+                        [(ngModel)]="entityPageFormats.pageformatname" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_mainimagepath">Mainimagepath</label>
+                    <input type="text" class="form-control" name="mainimagepath" id="field_mainimagepath"
+                        [(ngModel)]="entityPageFormats.mainimagepath" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_image2path">Image 2 Path</label>
+                    <input type="text" class="form-control" name="image2path" id="field_image2path"
+                        [(ngModel)]="entityPageFormats.image2path" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_image3path">Image 3 Path</label>
+                    <input type="text" class="form-control" name="image3path" id="field_image3path"
+                        [(ngModel)]="entityPageFormats.image3path" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

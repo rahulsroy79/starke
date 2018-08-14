@@ -1,0 +1,107 @@
+{
+    "name": "StarkeEntity",
+    "fields": [
+        {
+            "fieldName": "entityid",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "entityname",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "entitytypeid",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "istopentity",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "parententityid",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "allowrating",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "allowreview",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "entitycreationdate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "entitybriefdescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "entityimage",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "entityPageDetails",
+            "otherEntityName": "entityPageDetails",
+            "otherEntityField": "pagedetailid",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "starkeEntity"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "entityDetails",
+            "otherEntityName": "entityDetails",
+            "otherEntityField": "entityid",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "starkeEntity"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "entityReviews",
+            "otherEntityName": "entityReviews",
+            "otherEntityRelationshipName": "starkeEntity"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "parent",
+            "otherEntityName": "starkeEntity",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180812111348",
+    "entityTableName": "starke_entity",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

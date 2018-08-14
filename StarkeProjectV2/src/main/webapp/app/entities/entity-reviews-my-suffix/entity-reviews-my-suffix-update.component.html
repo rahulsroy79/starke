@@ -1,0 +1,121 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-entity-reviews-my-suffix-heading">Create or edit a Entity Reviews</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!entityReviews.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="entityReviews.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rating">Rating</label>
+                    <input type="number" class="form-control" name="rating" id="field_rating"
+                        [(ngModel)]="entityReviews.rating" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reviewid">Reviewid</label>
+                    <input type="number" class="form-control" name="reviewid" id="field_reviewid"
+                        [(ngModel)]="entityReviews.reviewid" required/>
+                    <div [hidden]="!(editForm.controls.reviewid?.dirty && editForm.controls.reviewid?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.reviewid?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.reviewid?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entityid">Entityid</label>
+                    <input type="number" class="form-control" name="entityid" id="field_entityid"
+                        [(ngModel)]="entityReviews.entityid" required/>
+                    <div [hidden]="!(editForm.controls.entityid?.dirty && editForm.controls.entityid?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.entityid?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.entityid?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reviewdate">Reviewdate</label>
+                    <div class="input-group">
+                        <input id="field_reviewdate" type="text" class="form-control" name="reviewdate" ngbDatepicker  #reviewdateDp="ngbDatepicker" [(ngModel)]="entityReviews.reviewdate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="reviewdateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_userid">Userid</label>
+                    <input type="number" class="form-control" name="userid" id="field_userid"
+                        [(ngModel)]="entityReviews.userid" required/>
+                    <div [hidden]="!(editForm.controls.userid?.dirty && editForm.controls.userid?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.userid?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.userid?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_subject">Subject</label>
+                    <input type="text" class="form-control" name="subject" id="field_subject"
+                        [(ngModel)]="entityReviews.subject" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_detail">Detail</label>
+                    <input type="text" class="form-control" name="detail" id="field_detail"
+                        [(ngModel)]="entityReviews.detail" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ismarked">Ismarked</label>
+                    <input type="number" class="form-control" name="ismarked" id="field_ismarked"
+                        [(ngModel)]="entityReviews.ismarked" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_isdeleted">Isdeleted</label>
+                    <input type="number" class="form-control" name="isdeleted" id="field_isdeleted"
+                        [(ngModel)]="entityReviews.isdeleted" required/>
+                    <div [hidden]="!(editForm.controls.isdeleted?.dirty && editForm.controls.isdeleted?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.isdeleted?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.isdeleted?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_starkeEntity">Starke Entity</label>
+                    <select class="form-control" id="field_starkeEntity" name="starkeEntity" [(ngModel)]="entityReviews.starkeEntityId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="starkeEntityOption.id" *ngFor="let starkeEntityOption of starkeentities; trackBy: trackStarkeEntityById">{{starkeEntityOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

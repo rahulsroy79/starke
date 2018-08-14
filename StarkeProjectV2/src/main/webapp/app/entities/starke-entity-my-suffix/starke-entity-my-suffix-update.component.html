@@ -1,0 +1,174 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-starke-entity-my-suffix-heading">Create or edit a Starke Entity</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!starkeEntity.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="starkeEntity.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entityid">Entityid</label>
+                    <input type="number" class="form-control" name="entityid" id="field_entityid"
+                        [(ngModel)]="starkeEntity.entityid" required/>
+                    <div [hidden]="!(editForm.controls.entityid?.dirty && editForm.controls.entityid?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.entityid?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.entityid?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entityname">Entityname</label>
+                    <input type="text" class="form-control" name="entityname" id="field_entityname"
+                        [(ngModel)]="starkeEntity.entityname" required/>
+                    <div [hidden]="!(editForm.controls.entityname?.dirty && editForm.controls.entityname?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.entityname?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entitytypeid">Entitytypeid</label>
+                    <input type="number" class="form-control" name="entitytypeid" id="field_entitytypeid"
+                        [(ngModel)]="starkeEntity.entitytypeid" required/>
+                    <div [hidden]="!(editForm.controls.entitytypeid?.dirty && editForm.controls.entitytypeid?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.entitytypeid?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.entitytypeid?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_istopentity">Istopentity</label>
+                    <input type="number" class="form-control" name="istopentity" id="field_istopentity"
+                        [(ngModel)]="starkeEntity.istopentity" required/>
+                    <div [hidden]="!(editForm.controls.istopentity?.dirty && editForm.controls.istopentity?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.istopentity?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.istopentity?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_parententityid">Parententityid</label>
+                    <input type="number" class="form-control" name="parententityid" id="field_parententityid"
+                        [(ngModel)]="starkeEntity.parententityid" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_allowrating">Allowrating</label>
+                    <input type="number" class="form-control" name="allowrating" id="field_allowrating"
+                        [(ngModel)]="starkeEntity.allowrating" required/>
+                    <div [hidden]="!(editForm.controls.allowrating?.dirty && editForm.controls.allowrating?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.allowrating?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.allowrating?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_allowreview">Allowreview</label>
+                    <input type="number" class="form-control" name="allowreview" id="field_allowreview"
+                        [(ngModel)]="starkeEntity.allowreview" required/>
+                    <div [hidden]="!(editForm.controls.allowreview?.dirty && editForm.controls.allowreview?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.allowreview?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.allowreview?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entitycreationdate">Entitycreationdate</label>
+                    <div class="input-group">
+                        <input id="field_entitycreationdate" type="text" class="form-control" name="entitycreationdate" ngbDatepicker  #entitycreationdateDp="ngbDatepicker" [(ngModel)]="starkeEntity.entitycreationdate"
+                        required/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="entitycreationdateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div [hidden]="!(editForm.controls.entitycreationdate?.dirty && editForm.controls.entitycreationdate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.entitycreationdate?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entitybriefdescription">Entitybriefdescription</label>
+                    <input type="text" class="form-control" name="entitybriefdescription" id="field_entitybriefdescription"
+                        [(ngModel)]="starkeEntity.entitybriefdescription" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entityimage">Entityimage</label>
+                    <div>
+                        <img [src]="'data:' + starkeEntity.entityimageContentType + ';base64,' + starkeEntity.entityimage" style="max-height: 100px;" *ngIf="starkeEntity.entityimage" alt="starkeEntity image"/>
+                        <div *ngIf="starkeEntity.entityimage" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{starkeEntity.entityimageContentType}}, {{byteSize(starkeEntity.entityimage)}}</span>
+                            <button type="button" (click)="clearInputImage('entityimage', 'entityimageContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_entityimage" (change)="setFileData($event, starkeEntity, 'entityimage', true)" accept="image/*"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="entityimage" id="field_entityimage"
+                        [(ngModel)]="starkeEntity.entityimage" />
+                    <input type="hidden" class="form-control" name="entityimageContentType" id="field_entityimageContentType"
+                        [(ngModel)]="starkeEntity.entityimageContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entityPageDetails">Entity Page Details</label>
+                    <select class="form-control" id="field_entityPageDetails" name="entityPageDetails" [(ngModel)]="starkeEntity.entityPageDetailsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="entityPageDetailsOption.id" *ngFor="let entityPageDetailsOption of entitypagedetails; trackBy: trackEntityPageDetailsById">{{entityPageDetailsOption.pagedetailid}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_entityDetails">Entity Details</label>
+                    <select class="form-control" id="field_entityDetails" name="entityDetails" [(ngModel)]="starkeEntity.entityDetailsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="entityDetailsOption.id" *ngFor="let entityDetailsOption of entitydetails; trackBy: trackEntityDetailsById">{{entityDetailsOption.entityid}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_parent">Parent</label>
+                    <select class="form-control" id="field_parent" name="parent" [(ngModel)]="starkeEntity.parentId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="starkeEntityOption.id" *ngFor="let starkeEntityOption of starkeentities; trackBy: trackStarkeEntityById">{{starkeEntityOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

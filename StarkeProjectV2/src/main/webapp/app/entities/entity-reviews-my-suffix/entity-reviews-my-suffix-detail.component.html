@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="entityReviews">
+            <h2><span>Entity Reviews</span> {{entityReviews.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Rating</span></dt>
+                <dd>
+                    <span>{{entityReviews.rating}}</span>
+                </dd>
+                <dt><span>Reviewid</span></dt>
+                <dd>
+                    <span>{{entityReviews.reviewid}}</span>
+                </dd>
+                <dt><span>Entityid</span></dt>
+                <dd>
+                    <span>{{entityReviews.entityid}}</span>
+                </dd>
+                <dt><span>Reviewdate</span></dt>
+                <dd>
+                    <span>{{entityReviews.reviewdate}}</span>
+                </dd>
+                <dt><span>Userid</span></dt>
+                <dd>
+                    <span>{{entityReviews.userid}}</span>
+                </dd>
+                <dt><span>Subject</span></dt>
+                <dd>
+                    <span>{{entityReviews.subject}}</span>
+                </dd>
+                <dt><span>Detail</span></dt>
+                <dd>
+                    <span>{{entityReviews.detail}}</span>
+                </dd>
+                <dt><span>Ismarked</span></dt>
+                <dd>
+                    <span>{{entityReviews.ismarked}}</span>
+                </dd>
+                <dt><span>Isdeleted</span></dt>
+                <dd>
+                    <span>{{entityReviews.isdeleted}}</span>
+                </dd>
+                <dt><span>Starke Entity</span></dt>
+                <dd>
+                    <div *ngIf="entityReviews.starkeEntityId">
+                        <a [routerLink]="['/starke-entity-my-suffix', entityReviews.starkeEntityId, 'view']">{{entityReviews.starkeEntityId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/entity-reviews-my-suffix', entityReviews.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<div>
+    <h2 id="page-heading">
+        <span>Starke Entities</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-starke-entity-my-suffix" [routerLink]="['/starke-entity-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Starke Entity
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="starkeEntities">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="entityid"><span>Entityid</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="entityname"><span>Entityname</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="entitytypeid"><span>Entitytypeid</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="istopentity"><span>Istopentity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parententityid"><span>Parententityid</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="allowrating"><span>Allowrating</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="allowreview"><span>Allowreview</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="entitycreationdate"><span>Entitycreationdate</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="entitybriefdescription"><span>Entitybriefdescription</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="entityimage"><span>Entityimage</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="entityPageDetailsPagedetailid"><span>Entity Page Details</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="entityDetailsEntityid"><span>Entity Details</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parentId"><span>Parent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let starkeEntity of starkeEntities ;trackBy: trackId">
+                <td><a [routerLink]="['/starke-entity-my-suffix', starkeEntity.id, 'view' ]">{{starkeEntity.id}}</a></td>
+                <td>{{starkeEntity.entityid}}</td>
+                <td>{{starkeEntity.entityname}}</td>
+                <td>{{starkeEntity.entitytypeid}}</td>
+                <td>{{starkeEntity.istopentity}}</td>
+                <td>{{starkeEntity.parententityid}}</td>
+                <td>{{starkeEntity.allowrating}}</td>
+                <td>{{starkeEntity.allowreview}}</td>
+                <td>{{starkeEntity.entitycreationdate | date:'mediumDate'}}</td>
+                <td>{{starkeEntity.entitybriefdescription}}</td>
+                <td>
+                    <a *ngIf="starkeEntity.entityimage" (click)="openFile(starkeEntity.entityimageContentType, starkeEntity.entityimage)">
+                        <img [src]="'data:' + starkeEntity.entityimageContentType + ';base64,' + starkeEntity.entityimage" style="max-height: 30px;" alt="starkeEntity image"/>
+                    </a>
+                    <span *ngIf="starkeEntity.entityimage">{{starkeEntity.entityimageContentType}}, {{byteSize(starkeEntity.entityimage)}}</span>
+                </td>
+                <td>
+                    <div *ngIf="starkeEntity.entityPageDetailsId">
+                        <a [routerLink]="['../entity-page-details-my-suffix', starkeEntity.entityPageDetailsId , 'view' ]" >{{starkeEntity.entityPageDetailsPagedetailid}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="starkeEntity.entityDetailsId">
+                        <a [routerLink]="['../entity-details-my-suffix', starkeEntity.entityDetailsId , 'view' ]" >{{starkeEntity.entityDetailsEntityid}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="starkeEntity.parentId">
+                        <a [routerLink]="['../starke-entity-my-suffix', starkeEntity.parentId , 'view' ]" >{{starkeEntity.parentId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/starke-entity-my-suffix', starkeEntity.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/starke-entity-my-suffix', starkeEntity.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'starke-entity-my-suffix/'+ starkeEntity.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="starkeEntities && starkeEntities.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity EntityPageDetails.
+    -->
+    <changeSet id="20180812111349-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="entity_page_formats_id"
+                                 baseTableName="entity_page_details"
+                                 constraintName="fk_entity_page_details_entity_page_formats_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="entity_page_formats"/>
+
+    </changeSet>
+</databaseChangeLog>

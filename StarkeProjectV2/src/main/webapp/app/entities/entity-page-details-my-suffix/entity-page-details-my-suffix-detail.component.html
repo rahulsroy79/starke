@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="entityPageDetails">
+            <h2><span>Entity Page Details</span> {{entityPageDetails.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Pagedetailid</span></dt>
+                <dd>
+                    <span>{{entityPageDetails.pagedetailid}}</span>
+                </dd>
+                <dt><span>Pagetypename</span></dt>
+                <dd>
+                    <span>{{entityPageDetails.pagetypename}}</span>
+                </dd>
+                <dt><span>Entity Page Formats</span></dt>
+                <dd>
+                    <div *ngIf="entityPageDetails.entityPageFormatsId">
+                        <a [routerLink]="['/entity-page-formats-my-suffix', entityPageDetails.entityPageFormatsId, 'view']">{{entityPageDetails.entityPageFormatsPageformatid}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/entity-page-details-my-suffix', entityPageDetails.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

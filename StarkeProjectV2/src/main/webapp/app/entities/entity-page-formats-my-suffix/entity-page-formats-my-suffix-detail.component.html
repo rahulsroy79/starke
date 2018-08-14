@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="entityPageFormats">
+            <h2><span>Entity Page Formats</span> {{entityPageFormats.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Pageformatid</span></dt>
+                <dd>
+                    <span>{{entityPageFormats.pageformatid}}</span>
+                </dd>
+                <dt><span>Pageformatname</span></dt>
+                <dd>
+                    <span>{{entityPageFormats.pageformatname}}</span>
+                </dd>
+                <dt><span>Mainimagepath</span></dt>
+                <dd>
+                    <span>{{entityPageFormats.mainimagepath}}</span>
+                </dd>
+                <dt><span>Image 2 Path</span></dt>
+                <dd>
+                    <span>{{entityPageFormats.image2path}}</span>
+                </dd>
+                <dt><span>Image 3 Path</span></dt>
+                <dd>
+                    <span>{{entityPageFormats.image3path}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/entity-page-formats-my-suffix', entityPageFormats.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

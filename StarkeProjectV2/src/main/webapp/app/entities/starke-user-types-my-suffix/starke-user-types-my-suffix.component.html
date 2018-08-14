@@ -1,0 +1,58 @@
+<div>
+    <h2 id="page-heading">
+        <span>Starke User Types</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-starke-user-types-my-suffix" [routerLink]="['/starke-user-types-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Starke User Types
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="starkeUserTypes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Usertypeid</span></th>
+            <th><span>Typename</span></th>
+            <th><span>Usertypedescription</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let starkeUserTypes of starkeUserTypes ;trackBy: trackId">
+                <td><a [routerLink]="['/starke-user-types-my-suffix', starkeUserTypes.id, 'view' ]">{{starkeUserTypes.id}}</a></td>
+                <td>{{starkeUserTypes.usertypeid}}</td>
+                <td>{{starkeUserTypes.typename}}</td>
+                <td>{{starkeUserTypes.usertypedescription}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/starke-user-types-my-suffix', starkeUserTypes.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/starke-user-types-my-suffix', starkeUserTypes.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'starke-user-types-my-suffix/'+ starkeUserTypes.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

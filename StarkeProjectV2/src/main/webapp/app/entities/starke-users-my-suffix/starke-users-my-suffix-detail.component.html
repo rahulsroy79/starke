@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="starkeUsers">
+            <h2><span>Starke Users</span> {{starkeUsers.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Userid</span></dt>
+                <dd>
+                    <span>{{starkeUsers.userid}}</span>
+                </dd>
+                <dt><span>Username</span></dt>
+                <dd>
+                    <span>{{starkeUsers.username}}</span>
+                </dd>
+                <dt><span>Useremail</span></dt>
+                <dd>
+                    <span>{{starkeUsers.useremail}}</span>
+                </dd>
+                <dt><span>Isactive</span></dt>
+                <dd>
+                    <span>{{starkeUsers.isactive}}</span>
+                </dd>
+                <dt><span>Usertypeid</span></dt>
+                <dd>
+                    <span>{{starkeUsers.usertypeid}}</span>
+                </dd>
+                <dt><span>Activesince</span></dt>
+                <dd>
+                    <span>{{starkeUsers.activesince}}</span>
+                </dd>
+                <dt><span>Registrationid</span></dt>
+                <dd>
+                    <span>{{starkeUsers.registrationid}}</span>
+                </dd>
+                <dt><span>Starke User Types</span></dt>
+                <dd>
+                    <div *ngIf="starkeUsers.starkeUserTypesId">
+                        <a [routerLink]="['/starke-user-types-my-suffix', starkeUsers.starkeUserTypesId, 'view']">{{starkeUsers.starkeUserTypesId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/starke-users-my-suffix', starkeUsers.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

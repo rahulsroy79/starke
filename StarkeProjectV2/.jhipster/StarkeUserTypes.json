@@ -1,0 +1,42 @@
+{
+    "name": "StarkeUserTypes",
+    "fields": [
+        {
+            "fieldName": "usertypeid",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "typename",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "usertypedescription",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "starkeUser",
+            "otherEntityName": "starkeUsers",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "starkeUserTypes"
+        }
+    ],
+    "changelogDate": "20180812111354",
+    "entityTableName": "starke_user_types",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

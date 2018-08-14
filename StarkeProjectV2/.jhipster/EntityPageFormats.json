@@ -1,0 +1,47 @@
+{
+    "name": "EntityPageFormats",
+    "fields": [
+        {
+            "fieldName": "pageformatid",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "pageformatname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mainimagepath",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "image2path",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "image3path",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "entityPageDetails",
+            "otherEntityName": "entityPageDetails",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "entityPageFormats"
+        }
+    ],
+    "changelogDate": "20180812111350",
+    "entityTableName": "entity_page_formats",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

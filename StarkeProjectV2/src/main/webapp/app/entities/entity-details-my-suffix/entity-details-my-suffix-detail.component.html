@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="entityDetails">
+            <h2><span>Entity Details</span> {{entityDetails.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Entityid</span></dt>
+                <dd>
+                    <span>{{entityDetails.entityid}}</span>
+                </dd>
+                <dt><span>Entitydescription</span></dt>
+                <dd>
+                    <span>{{entityDetails.entitydescription}}</span>
+                </dd>
+                <dt><span>Entitycontent</span></dt>
+                <dd>
+                    <span>{{entityDetails.entitycontent}}</span>
+                </dd>
+                <dt><span>Entitycontent 2</span></dt>
+                <dd>
+                    <span>{{entityDetails.entitycontent2}}</span>
+                </dd>
+                <dt><span>Entitycontent 3</span></dt>
+                <dd>
+                    <span>{{entityDetails.entitycontent3}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/entity-details-my-suffix', entityDetails.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

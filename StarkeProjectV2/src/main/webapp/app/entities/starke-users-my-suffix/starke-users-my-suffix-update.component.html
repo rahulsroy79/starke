@@ -1,0 +1,109 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-starke-users-my-suffix-heading">Create or edit a Starke Users</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!starkeUsers.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="starkeUsers.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_userid">Userid</label>
+                    <input type="number" class="form-control" name="userid" id="field_userid"
+                        [(ngModel)]="starkeUsers.userid" required/>
+                    <div [hidden]="!(editForm.controls.userid?.dirty && editForm.controls.userid?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.userid?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.userid?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_username">Username</label>
+                    <input type="text" class="form-control" name="username" id="field_username"
+                        [(ngModel)]="starkeUsers.username" required/>
+                    <div [hidden]="!(editForm.controls.username?.dirty && editForm.controls.username?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.username?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_useremail">Useremail</label>
+                    <input type="text" class="form-control" name="useremail" id="field_useremail"
+                        [(ngModel)]="starkeUsers.useremail" required/>
+                    <div [hidden]="!(editForm.controls.useremail?.dirty && editForm.controls.useremail?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.useremail?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_isactive">Isactive</label>
+                    <input type="number" class="form-control" name="isactive" id="field_isactive"
+                        [(ngModel)]="starkeUsers.isactive" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_usertypeid">Usertypeid</label>
+                    <input type="number" class="form-control" name="usertypeid" id="field_usertypeid"
+                        [(ngModel)]="starkeUsers.usertypeid" required/>
+                    <div [hidden]="!(editForm.controls.usertypeid?.dirty && editForm.controls.usertypeid?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.usertypeid?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.usertypeid?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_activesince">Activesince</label>
+                    <div class="input-group">
+                        <input id="field_activesince" type="text" class="form-control" name="activesince" ngbDatepicker  #activesinceDp="ngbDatepicker" [(ngModel)]="starkeUsers.activesince"
+                        required/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="activesinceDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div [hidden]="!(editForm.controls.activesince?.dirty && editForm.controls.activesince?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.activesince?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_registrationid">Registrationid</label>
+                    <input type="number" class="form-control" name="registrationid" id="field_registrationid"
+                        [(ngModel)]="starkeUsers.registrationid" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_starkeUserTypes">Starke User Types</label>
+                    <select class="form-control" id="field_starkeUserTypes" name="starkeUserTypes" [(ngModel)]="starkeUsers.starkeUserTypesId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="starkeUserTypesOption.id" *ngFor="let starkeUserTypesOption of starkeusertypes; trackBy: trackStarkeUserTypesById">{{starkeUserTypesOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

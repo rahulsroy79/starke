@@ -1,0 +1,47 @@
+{
+    "name": "EntityDetails",
+    "fields": [
+        {
+            "fieldName": "entityid",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "entitydescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "entitycontent",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "entitycontent2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "entitycontent3",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "starkeEntity",
+            "otherEntityName": "starkeEntity",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "entityDetails"
+        }
+    ],
+    "changelogDate": "20180812111351",
+    "entityTableName": "entity_details",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

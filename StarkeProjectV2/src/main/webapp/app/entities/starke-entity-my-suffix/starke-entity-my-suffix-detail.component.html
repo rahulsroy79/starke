@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="starkeEntity">
+            <h2><span>Starke Entity</span> {{starkeEntity.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Entityid</span></dt>
+                <dd>
+                    <span>{{starkeEntity.entityid}}</span>
+                </dd>
+                <dt><span>Entityname</span></dt>
+                <dd>
+                    <span>{{starkeEntity.entityname}}</span>
+                </dd>
+                <dt><span>Entitytypeid</span></dt>
+                <dd>
+                    <span>{{starkeEntity.entitytypeid}}</span>
+                </dd>
+                <dt><span>Istopentity</span></dt>
+                <dd>
+                    <span>{{starkeEntity.istopentity}}</span>
+                </dd>
+                <dt><span>Parententityid</span></dt>
+                <dd>
+                    <span>{{starkeEntity.parententityid}}</span>
+                </dd>
+                <dt><span>Allowrating</span></dt>
+                <dd>
+                    <span>{{starkeEntity.allowrating}}</span>
+                </dd>
+                <dt><span>Allowreview</span></dt>
+                <dd>
+                    <span>{{starkeEntity.allowreview}}</span>
+                </dd>
+                <dt><span>Entitycreationdate</span></dt>
+                <dd>
+                    <span>{{starkeEntity.entitycreationdate}}</span>
+                </dd>
+                <dt><span>Entitybriefdescription</span></dt>
+                <dd>
+                    <span>{{starkeEntity.entitybriefdescription}}</span>
+                </dd>
+                <dt><span>Entityimage</span></dt>
+                <dd>
+                    <div *ngIf="starkeEntity.entityimage">
+                        <a (click)="openFile(starkeEntity.entityimageContentType, starkeEntity.entityimage)">
+                            <img [src]="'data:' + starkeEntity.entityimageContentType + ';base64,' + starkeEntity.entityimage" style="max-width: 100%;" alt="starkeEntity image"/>
+                        </a>
+                        {{starkeEntity.entityimageContentType}}, {{byteSize(starkeEntity.entityimage)}}
+                    </div>
+                </dd>
+                <dt><span>Entity Page Details</span></dt>
+                <dd>
+                    <div *ngIf="starkeEntity.entityPageDetailsId">
+                        <a [routerLink]="['/entity-page-details-my-suffix', starkeEntity.entityPageDetailsId, 'view']">{{starkeEntity.entityPageDetailsPagedetailid}}</a>
+                    </div>
+                </dd>
+                <dt><span>Entity Details</span></dt>
+                <dd>
+                    <div *ngIf="starkeEntity.entityDetailsId">
+                        <a [routerLink]="['/entity-details-my-suffix', starkeEntity.entityDetailsId, 'view']">{{starkeEntity.entityDetailsEntityid}}</a>
+                    </div>
+                </dd>
+                <dt><span>Parent</span></dt>
+                <dd>
+                    <div *ngIf="starkeEntity.parentId">
+                        <a [routerLink]="['/starke-entity-my-suffix', starkeEntity.parentId, 'view']">{{starkeEntity.parentId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/starke-entity-my-suffix', starkeEntity.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
