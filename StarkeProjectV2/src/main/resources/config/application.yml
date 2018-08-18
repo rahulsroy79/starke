@@ -85,6 +85,8 @@ jhipster:
         #exposed-headers: "Authorization,Link,X-Total-Count"
         #allow-credentials: true
         #max-age: 1800
+    cors:
+        allowed-origins: "http://localhost:8100"
     mail:
         from: starkev2@localhost
     swagger:
@@ -98,6 +100,7 @@ jhipster:
         contact-email:
         license:
         license-url:
+    
 
 # ===================================================================
 # Application specific properties

@@ -1,10 +1,12 @@
 package com.starke.service;
 
+import com.starke.domain.StarkeEntity;
 import com.starke.service.dto.StarkeEntityDTO;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -27,8 +29,8 @@ public interface StarkeEntityService {
      * @return the list of entities
      */
     Page<StarkeEntityDTO> findAll(Pageable pageable);
-
-
+    
+    
     /**
      * Get the "id" starkeEntity.
      *
@@ -43,4 +45,6 @@ public interface StarkeEntityService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+	List<StarkeEntity> getByParentId(Long id);
 }

@@ -1,6 +1,7 @@
 package com.starke.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.starke.domain.StarkeEntity;
 import com.starke.service.StarkeEntityService;
 import com.starke.web.rest.errors.BadRequestAlertException;
 import com.starke.web.rest.util.HeaderUtil;
@@ -91,10 +92,24 @@ public class StarkeEntityResource {
     @GetMapping("/starke-entities")
     @Timed
     public ResponseEntity<List<StarkeEntityDTO>> getAllStarkeEntities(Pageable pageable) {
-        log.debug("REST request to get a page of StarkeEntities");
+        log.debug("1- REST request to get a page of StarkeEntities");
         Page<StarkeEntityDTO> page = starkeEntityService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/starke-entities");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+    
+    /**
+     * GET  /starke-entities : get all the starkeEntities.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of starkeEntities in body
+     */
+    @GetMapping("/starke-entities/byparentid/{id}")
+    @Timed
+    public ResponseEntity<List<StarkeEntity>> getAllStarkeEntitiesByParentId(@PathVariable Long id) {
+        log.debug("REST request to get a page of getAllStarkeEntitiesByParentId");
+        List<StarkeEntity> starkeEntity = starkeEntityService.getByParentId(id);
+        return ResponseEntity.ok().body(starkeEntity);
     }
 
     /**
@@ -110,7 +125,8 @@ public class StarkeEntityResource {
         Optional<StarkeEntityDTO> starkeEntityDTO = starkeEntityService.findOne(id);
         return ResponseUtil.wrapOrNotFound(starkeEntityDTO);
     }
-
+    
+    
     /**
      * DELETE  /starke-entities/:id : delete the "id" starkeEntity.
      *

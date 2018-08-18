@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import java.util.List;
 import java.util.Optional;
 /**
  * Service Implementation for managing StarkeEntity.
@@ -86,4 +86,12 @@ public class StarkeEntityServiceImpl implements StarkeEntityService {
         log.debug("Request to delete StarkeEntity : {}", id);
         starkeEntityRepository.deleteById(id);
     }
+    
+    @Override
+    public List<StarkeEntity> getByParentId(Long id) {
+    	log.debug("Request to getByParentId : {}", id);
+    	return starkeEntityRepository.findByParententityid(id);
+    }
+
+	
 }
