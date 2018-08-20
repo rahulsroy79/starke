@@ -1,0 +1,7 @@
+{
+  "name": "starkeMarket",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
