@@ -3,6 +3,7 @@ import { IonicPage, ModalController, NavController, ToastController } from 'ioni
 import { JhiDataUtils } from 'ng-jhipster';
 import { StarkeEntity } from './starke-entity.model';
 import { StarkeEntityService } from './starke-entity.provider';
+import { EntitygroupPage } from '../entitygroup/entitygroup';
 
 @IonicPage({
     
@@ -13,13 +14,14 @@ import { StarkeEntityService } from './starke-entity.provider';
 })
 export class StarkeEntityPage {
     starkeEntities: StarkeEntity[]; 
-
+    entitygrppage  = EntitygroupPage;
     // todo: add pagination
 
     constructor(private dataUtils: JhiDataUtils,private navCtrl: NavController, 
         private starkeEntityService: StarkeEntityService,
                 private modalCtrl: ModalController, private toastCtrl: ToastController) {
         this.starkeEntities = [];
+        
     }
 
     ionViewDidLoad() {
@@ -90,5 +92,9 @@ export class StarkeEntityPage {
 
     detail(starkeEntity: StarkeEntity) {
         this.navCtrl.push('StarkeEntityMySuffixDetailPage', {id: starkeEntity.id});
+    }
+
+    navigatepage(){
+      this.navCtrl.push(this.entitygrppage);
     }
 }

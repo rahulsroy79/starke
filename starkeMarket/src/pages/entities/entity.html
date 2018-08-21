@@ -11,9 +11,11 @@
     <ion-refresher (ionRefresh)="loadAll($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
-
-    <ion-list *ngFor="let starkeEntity of starkeEntities; trackBy: trackId" >
-            <ion-card class="card rounded">
+    <ion-grid>
+      <ion-list *ngFor="let starkeEntity of starkeEntities; trackBy: trackId; let i = index;" >
+          
+          
+            <ion-card class="card rounded" (click)="navigatepage()">
                 <ion-item>
                     <h2>{{starkeEntity.entityname}}</h2>
                     <p>{{starkeEntity.entitybriefdescription}}</p>
@@ -48,8 +50,10 @@
                     </ion-col>
                 </ion-row>
             </ion-card>
-        
-    </ion-list>
+          
+          
+      </ion-list>
+    </ion-grid>
     <ion-item *ngIf="!starkeEntities?.length">
         No Starke Entities found.
     </ion-item>
