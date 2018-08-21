@@ -15,41 +15,20 @@
       <ion-list *ngFor="let starkeEntity of starkeEntities; trackBy: trackId; let i = index;" >
           
           
-            <ion-card class="card rounded" (click)="navigatepage()">
-                <ion-item>
-                    <h2>{{starkeEntity.entityname}}</h2>
-                    <p>{{starkeEntity.entitybriefdescription}}</p>
-                </ion-item>
+              <ion-card class="card rounded" (click)="navigatepage()">
+                
+                    <div class="card-title">{{starkeEntity.entityname}}</div>
+                    <!-- <p>{{starkeEntity.entitybriefdescription}}</p> -->
                 
                 <ion-avatar *ngIf="starkeEntity.entityimage" >
                     <img [src]="'data:' + starkeEntity.entityimageContentType + ';base64,' + starkeEntity.entityimage" />
-                    <p *ngIf="starkeEntity.entityimage">{{starkeEntity.entityimageContentType}}, {{byteSize(starkeEntity.entityimage)}}</p>
+                    <!-- <p *ngIf="starkeEntity.entityimage">{{starkeEntity.entityimageContentType}}, {{byteSize(starkeEntity.entityimage)}}</p> -->
                 </ion-avatar>
                 
                 <ion-card-content>
                     <p>{{starkeEntity.entitybriefdescription}}</p>
                 </ion-card-content>
-                
-                <ion-row>
-                    <ion-col>
-                    <button ion-button icon-start clear small>
-                        <ion-icon name="thumbs-up"></ion-icon>
-                        <div>12 Likes</div>
-                    </button>
-                    </ion-col>
-                    <ion-col>
-                    <button ion-button icon-start clear small>
-                        <ion-icon name="text"></ion-icon>
-                        <div>4 Comments</div>
-                    </button>
-                    </ion-col>
-                    <ion-col center text-center>
-                        <ion-note>
-                            11h ago
-                        </ion-note>
-                    </ion-col>
-                </ion-row>
-            </ion-card>
+              </ion-card>
           
           
       </ion-list>

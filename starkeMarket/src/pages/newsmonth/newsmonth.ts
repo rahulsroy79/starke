@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { NewsmonthPage } from '../newsmonth/newsmonth';
 
 /**
- * Generated class for the EntitygroupPage page.
+ * Generated class for the NewsmonthPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,20 +10,16 @@ import { NewsmonthPage } from '../newsmonth/newsmonth';
 
 @IonicPage()
 @Component({
-  selector: 'page-entitygroup',
-  templateUrl: 'entitygroup.html',
+  selector: 'page-newsmonth',
+  templateUrl: 'newsmonth.html',
 })
-export class EntitygroupPage {
-  newsmonthPage = NewsmonthPage;
+export class NewsmonthPage {
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EntitygroupPage');
-  }
-
-  navNewsByMonth(){
-    this.navCtrl.push(this.newsmonthPage);
+    console.log('ionViewDidLoad NewsmonthPage');
   }
 
 }

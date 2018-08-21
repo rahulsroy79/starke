@@ -18,7 +18,8 @@ import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { AuthInterceptor } from '../providers/auth/auth-interceptor';
 import { StarkeEntityPageModule } from '../pages/entities/entity.module';
 import { JhiDataUtils } from '../../node_modules/ng-jhipster';
-import { EntitygroupPageModule } from '../pages/entitygroup/entitygroup.module'
+import { EntitygroupPageModule } from '../pages/entitygroup/entitygroup.module';
+import { NewsmonthPageModule } from '../pages/newsmonth/newsmonth.module';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -59,6 +60,7 @@ export function provideSettings(storage: Storage) {
     IonicStorageModule.forRoot(),
     StarkeEntityPageModule,
     EntitygroupPageModule,
+    NewsmonthPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
