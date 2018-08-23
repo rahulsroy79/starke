@@ -94,7 +94,8 @@ export class StarkeEntityPage {
         this.navCtrl.push('StarkeEntityMySuffixDetailPage', {id: starkeEntity.id});
     }
 
-    navigatepage(){
+    navigatepage(trackId : any){
+      console.log("ID _- "+trackId);
       this.navCtrl.push(this.entitygrppage);
     }
 }

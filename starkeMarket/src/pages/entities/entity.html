@@ -7,31 +7,85 @@
     </ion-navbar>
 </ion-header>
 <!-- todo: add elasticsearch support -->
-<ion-content padding class="itemheader">
+<ion-content padding class="itemheader" center text-center>
     <ion-refresher (ionRefresh)="loadAll($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
     <ion-grid>
-      <ion-list *ngFor="let starkeEntity of starkeEntities; trackBy: trackId; let i = index;" >
-          
-          
-              <ion-card class="card rounded" (click)="navigatepage()">
+      <ion-row center>
+        <ion-col class="col">
+          <ion-card class="card rounded" (click)="navigatepage()">
+      
+              <img src="assets/img/news_main.jpg"/>
+              <div class="card-title">News</div>
+              <div class="card-subtitle">41 Listings</div>
                 
-                    <div class="card-title">{{starkeEntity.entityname}}</div>
-                    <!-- <p>{{starkeEntity.entitybriefdescription}}</p> -->
+            </ion-card>
+        </ion-col>
+        <ion-col class="col">
+          <ion-card class="card rounded">
+    
+            <img src="assets/img/articles_main.png"/>
+            <div class="card-title">Articles</div>
+            <div class="card-subtitle">25 Listings</div>
+              
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row center>
+        <ion-col class="col">
+          <ion-card class="card rounded">
+      
+              <img src="assets/img/local_guide_main.png"/>
+              <div class="card-title">Local Guide</div>
                 
-                <ion-avatar *ngIf="starkeEntity.entityimage" >
-                    <img [src]="'data:' + starkeEntity.entityimageContentType + ';base64,' + starkeEntity.entityimage" />
-                    <!-- <p *ngIf="starkeEntity.entityimage">{{starkeEntity.entityimageContentType}}, {{byteSize(starkeEntity.entityimage)}}</p> -->
-                </ion-avatar>
+            </ion-card>
+        </ion-col>
+        <ion-col class="col">
+          <ion-card class="card rounded">
+    
+            <img src="assets/img/offers_main.png"/>
+            <div class="card-title">Offers</div>
+              
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row center>
+        <ion-col class="col">
+          <ion-card class="card rounded">
+      
+              <img src="assets/img/new_launches_main.png"/>
+              <div class="card-title">New Launches</div>
                 
-                <ion-card-content>
-                    <p>{{starkeEntity.entitybriefdescription}}</p>
-                </ion-card-content>
+            </ion-card>
+        </ion-col>
+        <ion-col class="col">
+          <ion-card class="card rounded">
+    
+            <img src="assets/img/telecom_main.png"/>
+            <div class="card-title">Telecom</div>
+              
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row center>
+          <ion-col class="col">
+            <ion-card class="card rounded">
+        
+                <img src="assets/img/get_associated_main.png"/>
+                <div class="card-title">Get Associated</div>
+                  
               </ion-card>
-          
-          
-      </ion-list>
+          </ion-col>
+          <ion-col class="col">
+            <ion-card class="card rounded">
+      
+              <img src="assets/img/pal_main.png"/>
+              <div class="card-title">PAL</div>
+                
+            </ion-card>
+          </ion-col>
+        </ion-row>
     </ion-grid>
     <ion-item *ngIf="!starkeEntities?.length">
         No Starke Entities found.

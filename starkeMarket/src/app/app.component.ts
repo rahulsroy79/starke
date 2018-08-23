@@ -5,19 +5,20 @@ import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
 import { MainPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
+import { EntitygroupPage } from  '../pages/entitygroup/entitygroup';
 
 @Component({
   template: `<ion-menu [content]="content">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Pages</ion-title>
+        <ion-title>Starke Navigation</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
       <ion-list>
         <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}}
+          {{p.title}} 
         </button>
       </ion-list>
     </ion-content>
@@ -27,17 +28,17 @@ import { Settings } from '../providers/providers';
 })
 export class MyApp {
   rootPage = MainPage;
-
+  entitygrppage  = EntitygroupPage;
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Welcome', component: 'WelcomePage' },
-    { title: 'Tabs', component: 'TabsPage' },
-    { title: 'Login', component: 'LoginPage' },
-    { title: 'Signup', component: 'SignupPage' },
-    { title: 'Menu', component: 'MenuPage' },
+    // { title: 'Welcome', component: 'WelcomePage' },
+    // { title: 'Tabs', component: 'TabsPage' },
+    // { title: 'Login', component: 'LoginPage' },
+    // { title: 'Signup', component: 'SignupPage' },
+    { title: 'News', component: 'EntitygroupPage' },
     { title: 'Settings', component: 'SettingsPage' },
-    { title: 'Entities', component: 'StarkeEntityPage' }
+    { title: 'Starke Entities', component: 'StarkeEntityPage' }
   ];
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config,
@@ -69,6 +70,7 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    // this.nav.setRoot(page.component);
+    this.nav.push(page.component);
   }
 }
