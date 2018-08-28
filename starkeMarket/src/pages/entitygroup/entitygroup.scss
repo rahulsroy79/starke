@@ -14,7 +14,9 @@ page-entitygroup {
     font-size: 1.5em;
     width: 100%;
     font-weight: bold;
-    color: rgb(5, 5, 5);
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
   }
 
   .card-subtitle {
@@ -22,5 +24,7 @@ page-entitygroup {
     position: absolute;
     bottom: 80%;
     width: 100%;
-    color: rgb(2, 27, 248);
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
   }

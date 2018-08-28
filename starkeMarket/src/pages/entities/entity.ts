@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, NavController, ToastController } from 'ionic-angular';
+import { App, IonicPage, ModalController, NavController, ToastController } from 'ionic-angular';
 import { JhiDataUtils } from 'ng-jhipster';
 import { StarkeEntity } from './starke-entity.model';
 import { StarkeEntityService } from './starke-entity.provider';
 import { EntitygroupPage } from '../entitygroup/entitygroup';
+import { Principal } from '../../providers/auth/principal.service';
+import { FirstRunPage } from '../pages';
 
 @IonicPage({
     
@@ -13,12 +15,14 @@ import { EntitygroupPage } from '../entitygroup/entitygroup';
     templateUrl: 'entity.html'
 })
 export class StarkeEntityPage {
+  account: Account;
     starkeEntities: StarkeEntity[]; 
     entitygrppage  = EntitygroupPage;
     // todo: add pagination
 
     constructor(private dataUtils: JhiDataUtils,private navCtrl: NavController, 
         private starkeEntityService: StarkeEntityService,
+        private principal: Principal, private app: App,
                 private modalCtrl: ModalController, private toastCtrl: ToastController) {
         this.starkeEntities = [];
         
@@ -97,5 +101,19 @@ export class StarkeEntityPage {
     navigatepage(trackId : any){
       console.log("ID _- "+trackId);
       this.navCtrl.push(this.entitygrppage);
+    }
+
+    ngOnInit() {
+      this.principal.identity().then((account) => {
+        if (account === null) {
+          this.app.getRootNavs()[0].setRoot(FirstRunPage);
+        } else {
+          this.account = account;
+        }
+      });
+    }
+  
+    isAuthenticated() {
+      return this.principal.isAuthenticated();
     }
 }

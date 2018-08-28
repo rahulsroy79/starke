@@ -3,87 +3,72 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Starke Home</ion-title>
+        <ion-title>Welcome, {{account?.firstName}}!</ion-title>
     </ion-navbar>
+    <ion-toolbar center text-center no-padding>
+      <ion-grid>
+        <ion-row center class="noborder">
+          <ion-col >
+            <button ion-fab mini><ion-icon name="logo-facebook"></ion-icon></button>
+          </ion-col>
+          <ion-col>
+              <button ion-fab mini><ion-icon name="logo-twitter"></ion-icon></button>
+          </ion-col>
+          <ion-col>
+              <button ion-fab mini><ion-icon name="logo-vimeo"></ion-icon></button>
+          </ion-col>
+          <ion-col>
+              <button ion-fab mini><ion-icon name="logo-googleplus"></ion-icon></button>
+          </ion-col>
+          <ion-col>
+              <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+          </ion-col>
+          
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
 </ion-header>
 <!-- todo: add elasticsearch support -->
-<ion-content padding class="itemheader" center text-center>
+<ion-content class="itemheader" center text-center>
     <ion-refresher (ionRefresh)="loadAll($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
     <ion-grid>
-      <ion-row center>
-        <ion-col class="col">
-          <ion-card class="card rounded" (click)="navigatepage()">
-      
-              <img src="assets/img/news_main.jpg"/>
-              <div class="card-title">News</div>
-              <div class="card-subtitle">41 Listings</div>
-                
-            </ion-card>
-        </ion-col>
-        <ion-col class="col">
-          <ion-card class="card rounded">
-    
-            <img src="assets/img/articles_main.png"/>
-            <div class="card-title">Articles</div>
-            <div class="card-subtitle">25 Listings</div>
-              
-          </ion-card>
+      <ion-row center no-padding> 
+        <ion-col class="columns" col-12 no-padding (click)="navigatepage()">
+          <img src="assets/img/news_tile_main.jpg"/> 
+          <div class="card-title">News</div>
+          <div class="card-subtitle">41 Listings</div>
         </ion-col>
       </ion-row>
       <ion-row center>
-        <ion-col class="col">
-          <ion-card class="card rounded">
-      
-              <img src="assets/img/local_guide_main.png"/>
-              <div class="card-title">Local Guide</div>
-                
-            </ion-card>
+        <ion-col class="columns" col-6 no-padding >
+          <img src="assets/img/local_guide_tile_main.jpg"/>
+          <div class="card-title">Local Guide</div>
         </ion-col>
-        <ion-col class="col">
-          <ion-card class="card rounded">
-    
-            <img src="assets/img/offers_main.png"/>
-            <div class="card-title">Offers</div>
-              
-          </ion-card>
+        <ion-col class="columns" col-6 no-padding>
+            <img src="assets/img/offers_tile_main.jpg"/>
+            <div class="card-title">Offers</div> 
         </ion-col>
       </ion-row>
       <ion-row center>
-        <ion-col class="col">
-          <ion-card class="card rounded">
-      
-              <img src="assets/img/new_launches_main.png"/>
-              <div class="card-title">New Launches</div>
-                
-            </ion-card>
+          <ion-col class="columns" col-6 no-padding>
+          <img src="assets/img/new_launches_tile_main.jpg"/>
+          <div class="card-title">New Launches</div>
         </ion-col>
-        <ion-col class="col">
-          <ion-card class="card rounded">
-    
-            <img src="assets/img/telecom_main.png"/>
-            <div class="card-title">Telecom</div>
-              
-          </ion-card>
+        <ion-col class="columns" col-6 no-padding>
+          <img src="assets/img/telecom_tile_main.jpg"/>
+          <div class="card-title">Telecom</div>
         </ion-col>
       </ion-row>
       <ion-row center>
-          <ion-col class="col">
-            <ion-card class="card rounded">
-        
-                <img src="assets/img/get_associated_main.png"/>
-                <div class="card-title">Get Associated</div>
-                  
-              </ion-card>
+          <ion-col class="columns" col-6 no-padding>
+            <img src="assets/img/get_associated_tile_main.jpg"/>
+            <div class="card-title">Get Associated</div>
           </ion-col>
-          <ion-col class="col">
-            <ion-card class="card rounded">
-      
-              <img src="assets/img/pal_main.png"/>
-              <div class="card-title">PAL</div>
-                
-            </ion-card>
+          <ion-col class="columns" col-6 no-padding> 
+            <img src="assets/img/pal_tile_main.jpg"/>
+            <div class="card-title">PAL</div>
           </ion-col>
         </ion-row>
     </ion-grid>

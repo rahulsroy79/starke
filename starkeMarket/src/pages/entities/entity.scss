@@ -13,10 +13,23 @@
   border-radius : 10px; 
 }
 
-.col
+.columns
 {
-  border: thin solid gray;
   height: 100%;
   display: block;
+  background-color: rgb(255, 255, 255);
+}
+
+.rowclass
+{
+  background-color: rgb(255, 255, 255);
+}
+
+.img-background {
+  background-image: url('assets/img/navigation_main.jpg');
+}
+.toolbar-class{
+  background-color: rgb(112, 112, 112);
+  color: rgb(255, 255, 255);
 }
 
